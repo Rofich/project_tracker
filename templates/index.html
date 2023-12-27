@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<main class='index-page'>
+	<section class="block1">
+		<section class='index-banner'>
+			<img src="{% static 'img/index-banner.jpg' %}" alt="">
+			<h1 class="index-banner_title title">
+				Теперь управлять проектами стало еще удобнее
+			</h1>
+		</section>
+		<p class='block1-text t-28'>Сервис для работы в команде.</p>
+		<p class='block1-text t-28' >Создавайте проекты, следите за процессом и выполняйте задачи</p>
+		<a href="" class="block1-btn">Попробовать</a>
+	</section>
+	<hr>
+	<section class='block2'>
+		<h1 class='title'>Все, что нужно для комфортной работы</h1>
+		<hr class='hr_green'>
+		<ul class="block2-cards-list">
+			<li class="block2-cards-list_item">
+				<img src="{% static "img/team.svg" %}" alt="" class="block2-cards-list_item_img">
+				<p class="block2-cards-list_item_p t-28">Командная работа над задачами и проектами</p>
+			</li>
+			<li class="block2-cards-list_item">
+				<img src="{% static "img/start.png" %}" alt="" class="block2-cards-list_item_img">
+				<p class="block2-cards-list_item_p t-28">Все необходимое для работы над проектами</p>
+			</li>
+			<li class="block2-cards-list_item">
+				<img src="{% static "img/Briefing.svg" %}" alt="" class="block2-cards-list_item_img">
+				<p class="block2-cards-list_item_p t-28">Ставьте задачи и выполняйте их</p>
+			</li>
+		</ul>
+	</section>
+	<hr>
+	{% if user.is_authenticated %}
+	
+	<section class='block3'>
+		<h1 class='block3-title title'>Мои проекты</h1>
+		<hr class='hr_green'>
+		{% if project_list %}
+			{% for project in project_list %}
+			{% endfor %}
+		{% else %}
+		<div class="block3-not-projects">
+			<img src="{% static "img/not_found.png" %}" class='block3-not-projects_img' alt="">
+			<p class='block3-not-projects_p'>Пока нет проектов</p>
+			<a href="" class='block3-not-projects_link'>Создать</a>
+		</div>
+		{% endif %}
+	</section>
+	{% endif %}
+</main>
+{% endblock content %}

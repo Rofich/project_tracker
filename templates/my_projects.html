@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class='my-projects-title title'>Мои проекты</h1>
+<a href="/add_project" class='my-projects-create-link'>Создать проект</a>
+<ul class="my-projects-list">
+	<li class="my-project-list_item">
+		<span>Название проекта</span>
+		<span>Срок</span>
+		<span>Описание проекта</span>
+		<span>Статус</span>
+	</li>
+	{% for project in project_list %}
+	<a href="/my-projects/{{project.pk}}" class="my-project-list_item">
+			<span>{{ project.name }}</span>
+			<span>{{project.end_time}} </span>
+			<span>{{project.description}}</span>
+			<span>{{project.get_status}}</span>
+		</a>
+	{% endfor %}
+</ul>
+{% endblock content %}

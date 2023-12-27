@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class='my-tasks-title title'>Мои задачи</h1>
+<a href="" class='my-tasks-create-link'>Создать задачу</a>
+<ul class="my-tasks-list">
+	{% for task in tasks %}
+
+	{% endfor %}
+</ul>
+{% endblock content %}

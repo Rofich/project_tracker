@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ProjectTracker</title>
+	<link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+	<div class="container">
+	<header class='header'>
+		<div class="header_left">
+			<img src="{% static "img/logo.svg" %}" alt="" class="logo">
+			<div class="header-input_container">
+				<input type="text" class="header-input">
+				<img src="{% static 'img/Search.svg' %}" alt="" class="header-input_icon">
+			</div>
+		</div>
+		<nav class="header-nav">
+			<ul class="header-nav-list">
+				<li class="header-nav-list_item"><a href="my-tasks" class="header-nav-list_item__link">Задачи</a></li>
+				<li class="header-nav-list_item"><a href="my-projects" class="header-nav-list_item__link">Мои проекты</a></li>
+				<li class="header-nav-list_item">
+					{% if user.is_authenticated %}
+						<img src="{% static "img/User.svg" %}" alt="">
+					{% else %}
+					<a href="/registration" class="header-nav-list_item__link">Войти</a></li>
+					{% endif %}
+			</ul>
+		</nav>
+	</header>
+		{% block content %}{% endblock content %}
+	</div>
+</body>
+</html>

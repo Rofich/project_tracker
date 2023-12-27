@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form class='form' action="/login" method='post'>
+	{% csrf_token %}
+	<h2 class='form-title'>Форма входа</h2>
+	{% for field in form %}
+		<div class="form-field">
+			{{field.label}}
+			{{field}}
+		</div>
+		<span style="color:red;">{{field.errors}}</span>
+	{% endfor %}
+	<a href="/registration">Нет аккаунта?</a>
+	<button type="submit" class='form-btn'>Войти</button>
+</form>
+{% endblock content %}
